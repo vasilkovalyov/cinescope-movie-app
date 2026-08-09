@@ -21,14 +21,14 @@ const eslintConfig = defineConfig([
     rules: {
       ...reactHooks.configs.recommended.rules,
       eqeqeq: ['error', 'smart'],
-      'react/jsx-no-literals': [
-        'warn',
-        {
-          noStrings: true,
-          ignoreProps: true,
-          allowedStrings: [' ', '|', '—', '·', '/', '.'],
-        },
-      ],
+      // 'react/jsx-no-literals': [
+      //   'warn',
+      //   {
+      //     noStrings: true,
+      //     ignoreProps: true,
+      //     allowedStrings: [' ', '|', '—', '·', '/', '.'],
+      //   },
+      // ],
       'max-depth': ['error', 4],
       'max-params': ['error', 5],
       'react/self-closing-comp': ['error', { component: true, html: true }],

@@ -19,7 +19,7 @@ export function Logo({ size = 'medium' }: LogoProps) {
           })}
         >
           <svg
-            className={clsx('w-4 h-4 text-dark-text', {
+            className={clsx('w-4 h-4 text-dark', {
               'w-[14] h-[14]': size === 'small',
               'w-[16] h-[16]': size === 'medium',
             })}

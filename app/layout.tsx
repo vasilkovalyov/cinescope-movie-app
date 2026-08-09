@@ -2,8 +2,10 @@ import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 
 import { cn } from '@/lib/utils';
-import { BaseLayout } from '@/src/components/layouts';
 
+import { BaseLayout } from '@/components/layouts';
+
+import { dmSerifDisplayFont, interFont } from './fonts';
 import './globals.css';
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
@@ -15,8 +17,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" className={cn('h-full antialiased', 'font-sans', geist.variable)}>
-      <body className="min-h-screen bg-[#07090F]">
+    <html
+      lang="en"
+      className={cn(
+        'antialiased',
+        'font-sans',
+        geist.variable,
+        dmSerifDisplayFont.variable,
+        interFont.variable,
+      )}
+    >
+      <body>
         <BaseLayout>{children}</BaseLayout>
       </body>
     </html>

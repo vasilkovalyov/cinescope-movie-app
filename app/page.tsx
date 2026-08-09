@@ -1,11 +1,17 @@
-import { Button } from '@/src/components/ui/button';
-import { Toggle } from '@/src/components/ui/toggle';
+import { getSingleTrendingMovie } from '@/api/get-single-trending-movie';
 
-export default function Home() {
+import { SectionHomeHero } from '@/components/sections';
+
+import { trendingMovieAdapter } from '@/utils/adapters';
+
+export default async function Home() {
+  const data = await getSingleTrendingMovie({
+    includes: ['credits', 'images', 'keywords', 'videos'],
+  });
+
   return (
-    <section>
-      <Button>Button</Button>
-      <Toggle>Toggle</Toggle>
-    </section>
+    <>
+      <SectionHomeHero {...trendingMovieAdapter(data)} />
+    </>
   );
 }
