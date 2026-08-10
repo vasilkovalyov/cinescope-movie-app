@@ -4,4 +4,5 @@ export const PAGES = {
   tvShows: '/tv-shows',
   people: '/people',
   search: '/search',
+  discover: '/discover',
 } as const;

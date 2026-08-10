@@ -3,7 +3,7 @@ import { SectionHomeHeroProps } from '@/components/sections';
 import { AppendResponseCredits, AppendResponseVideos } from '@/types/append-response.type';
 import { MovieDetails } from '@/types/movie/movie-details.type';
 
-import { getFormatRuntime } from '../common';
+import { getFormatRuntime, getImageFullUrl, roundToDecimal } from '../common';
 
 export function popularMovieAdapter(
   movie: MovieDetails<AppendResponseCredits, undefined, undefined, AppendResponseVideos>,
@@ -27,8 +27,8 @@ export function popularMovieAdapter(
     title: title,
     tagline: tagline,
     overview: overview,
-    image: backdrop_path,
-    voteAverage: vote_average.toFixed(1),
+    image: getImageFullUrl(backdrop_path),
+    voteAverage: roundToDecimal(vote_average),
     releaseDate: new Date(release_date).getFullYear().toString(),
     director: director?.name || '',
     runtime: getFormatRuntime(runtime),

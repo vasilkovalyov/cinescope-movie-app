@@ -1,2 +1,3 @@
 export { popularMovieAdapter } from './popular-movie.adapter';
-export { topTrendingMoviesAdapter } from './top-trending-movies.adapter';
+export { topRatedMoviesAdapter } from './top-rated-movies.adapter';
+export { listMoviesPreviewAdapter } from './list-preview.adapter';

@@ -3,7 +3,7 @@ import { Fragment } from 'react/jsx-runtime';
 import { Rating } from './rating';
 
 interface MovieMetaProps {
-  rating: string;
+  rating: number;
   details: {
     id: string;
     value: string;

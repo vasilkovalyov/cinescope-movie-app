@@ -1,19 +1,21 @@
-import { BannerTrandingMovieProps } from '@/components/common';
+import { BannerRatedMovieProps } from '@/components/common';
 
 import { AppendResponseCredits, AppendResponseVideos } from '@/types/append-response.type';
 import { MovieDetails } from '@/types/movie/movie-details.type';
 
-export function topTrendingMoviesAdapter(
+import { getImageFullUrl, roundToDecimal } from '../common';
+
+export function topRatedMoviesAdapter(
   movies: MovieDetails<AppendResponseCredits, undefined, undefined, AppendResponseVideos>[],
-): BannerTrandingMovieProps[] {
+): BannerRatedMovieProps[] {
   return movies.map(({ id, genres, backdrop_path, title, vote_average }, index) => {
-    const movieProps: BannerTrandingMovieProps = {
+    const movieProps: BannerRatedMovieProps = {
       id: id.toString(),
       number: (index + 1).toString(),
       title,
-      voteAverage: vote_average.toFixed(1),
+      voteAverage: roundToDecimal(vote_average),
       genres,
-      image: backdrop_path,
+      image: getImageFullUrl(backdrop_path),
     };
 
     return movieProps;

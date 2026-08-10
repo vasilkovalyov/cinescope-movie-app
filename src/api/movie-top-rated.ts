@@ -2,11 +2,11 @@ import { DEFAULT_LANGUAGE } from '@/constants';
 
 import { IResponseList } from '@/types/api.type';
 
-import { MovieTrending } from '../types/movie/movie-trending.type';
+import { Movie } from '../types/movie/movie.type';
 import { fetchGetApiTMDB } from './fetch-api-tmdb';
 
-export function getTrendingMovies(): Promise<IResponseList<MovieTrending>> {
-  return fetchGetApiTMDB('/trending/movie/day', {
+export function getMovieTopRated(): Promise<IResponseList<Movie>> {
+  return fetchGetApiTMDB('/movie/top_rated', {
     language: DEFAULT_LANGUAGE,
     page: '1',
   });

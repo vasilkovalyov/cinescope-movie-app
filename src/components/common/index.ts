@@ -1,6 +1,10 @@
 export { Logo } from './logo';
 export { MovieMeta } from './movie-meta';
-export { BannerTrandingMovie } from './banner-trading-movie';
-export type { BannerTrandingMovieProps } from './banner-trading-movie';
+export { BannerRatedMovie } from './banner-rated-movie';
+export type { BannerRatedMovieProps } from './banner-rated-movie';
 export { GenreList } from './genre-list';
 export { SwiperCarousel } from './swiper-carousel';
+export { PreviewMovieCard } from './preview-movie-card';
+export type { PreviewMovieCardProps } from './preview-movie-card';
+export { PreviewPersonCard } from './preview-person-card';
+export type { PreviewPersonCardProps } from './preview-person-card';

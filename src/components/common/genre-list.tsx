@@ -8,11 +8,17 @@ interface GenreListProps {
   items: MovieGenre[];
   size?: 'xs' | 'base';
   color?: 'default' | 'secondary';
+  gap?: 'sm' | 'md' | 'none';
 }
 
-export function GenreList({ items, size = 'base', color = 'default' }: GenreListProps) {
+export function GenreList({ items, size = 'base', color = 'default', gap = 'md' }: GenreListProps) {
   return (
-    <ul className="flex flex-wrap items-center gap-[12px] text-primary-dark-text">
+    <ul
+      className={cn('flex flex-wrap items-center text-primary-dark-text', {
+        'gap-[4px]': gap === 'sm',
+        'gap-[12px]': gap === 'md',
+      })}
+    >
       {items.map(({ id, name }) => (
         <li key={id}>
           <Badge

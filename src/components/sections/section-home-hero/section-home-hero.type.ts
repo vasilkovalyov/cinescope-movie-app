@@ -4,7 +4,7 @@ export interface SectionHomeHeroProps {
   tagline: string;
   overview: string;
   image: string;
-  voteAverage: string;
+  voteAverage: number;
   releaseDate: string;
   director: string;
   runtime: string;

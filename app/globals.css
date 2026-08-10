@@ -13,6 +13,8 @@
 
   --white: #ffffff;
 
+  --danger: #e05555;
+
   --primary-dark-text: #6b7a99;
   --secondary-dark-text: #8a9bbf;
 
@@ -50,6 +52,8 @@
   --color-success: var(--success);
 
   --color-divider: var(--divider);
+
+  --color-danger: var(--danger);
 
   --color-navigation-mobile-bg: #0d1221;
 }
@@ -95,6 +99,39 @@
   h6 {
     @apply text-[14px];
   }
+
+  .swiper:not(.swiper-initialized) .swiper-wrapper {
+    @apply gap-[16px];
+  }
+
+  .section-top-rated-movies .swiper-pagination {
+    @apply absolute bottom-[16px] right-[24px] flex gap-[6px] z-1;
+  }
+
+  .section-top-rated-movies .swiper-pagination-bullet {
+    @apply h-[6px] rounded-full transition-all duration-300 w-[10px] bg-[#3A4A65] hover:bg-primary-dark-text cursor-pointer;
+  }
+
+  .section-top-rated-movies .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    @apply w-[30px] bg-primary;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    @apply inline-flex relative md:absolute md:top-1/2 md:-translate-y-1/2 size-[40px] rounded-full bg-navigation-mobile-bg border border-white/5 items-center justify-center text-light hover:bg-accent-bg-1 hover:border-primary/40 transition-all shadow-xl z-10 cursor-pointer;
+  }
+
+  .swiper-button-disabled {
+    @apply hidden;
+  }
+
+  .swiper-button-next {
+    @apply md:right-[20px] md:translate-x-4;
+  }
+
+  .swiper-button-prev {
+    @apply md:left-[20px] md:-translate-x-4 -scale-x-100;
+  }
 }
 
 @layer utilities {
@@ -104,5 +141,16 @@
 
   .wrapper {
     @apply flex flex-col min-h-screen;
+  }
+
+  .card-overlay-gradient {
+    @apply absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+
+    background: linear-gradient(
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.1) 30%,
+      rgba(0, 0, 0, 0.6) 60%,
+      rgba(0, 0, 0, 0.95) 100%
+    );
   }
 }

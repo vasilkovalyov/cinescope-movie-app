@@ -39,7 +39,7 @@ export function SectionHomeHero({
     <section className="relative flex flex-col justify-center h-[85vh] min-h-[600px] max-h-[900px]">
       <div className="absolute inset-0 bg-dark">
         <Image
-          src={`https://image.tmdb.org/t/p/original${image}`}
+          src={image}
           alt={title}
           fill={true}
           className="object-cover"

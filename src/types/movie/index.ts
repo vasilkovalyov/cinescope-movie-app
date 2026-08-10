@@ -6,6 +6,6 @@ export type { MoviePerson } from './movie-person.type';
 export type { MovieProductionCompany } from './movie-production-companies.type';
 export type { MovieProductionCountry } from './movie-production-country.type';
 export type { MovieSpokenLanguages } from './movie-spoken-languages.type';
-export type { MovieTrending } from './movie-trending.type';
+export type { Movie } from './movie.type';
 export type { MovieImage } from './movie-image.type';
 export type { MovieKeyword } from './movie-keyword.type';

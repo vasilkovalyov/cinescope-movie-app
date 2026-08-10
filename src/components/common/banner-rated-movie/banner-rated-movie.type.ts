@@ -1,10 +1,10 @@
 import { MovieGenre } from '@/types/movie';
 
-export interface BannerTrandingMovieProps {
+export interface BannerRatedMovieProps {
   id: string;
   number: string;
   title: string;
-  voteAverage: string;
+  voteAverage: number;
   genres: MovieGenre[];
   image: string;
 }

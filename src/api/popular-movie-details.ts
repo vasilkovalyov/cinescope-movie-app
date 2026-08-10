@@ -4,8 +4,8 @@ import {
   MovieAppendResponseParams,
 } from '../types/append-response.type';
 import { MovieDetails } from '../types/movie/movie-details.type';
-import { getMovieDetails } from './get-movie-details';
-import { getMoviePopular } from './get-movie-popular';
+import { getMovieDetails } from './movie-details';
+import { getMoviePopular } from './movie-popular';
 
 export async function getPopularMovieDetails(
   params: MovieAppendResponseParams,

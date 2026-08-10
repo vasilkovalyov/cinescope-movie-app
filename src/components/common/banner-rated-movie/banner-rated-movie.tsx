@@ -9,21 +9,21 @@ import { PAGES } from '@/constants';
 
 import { GenreList } from '../genre-list';
 import { Rating } from '../rating';
-import { BannerTrandingMovieProps } from './banner-trading-movie.type';
+import { BannerRatedMovieProps } from './banner-rated-movie.type';
 
-export function BannerTrandingMovie({
+export function BannerRatedMovie({
   id,
   number,
   title,
   voteAverage,
   genres,
   image,
-}: BannerTrandingMovieProps) {
+}: BannerRatedMovieProps) {
   return (
     <div className="relative h-[192px] overflow-hidden md:h-[256px] lg:h-[320px] flex flex-col justify-center rounded-[16px] border border-white/5">
       <div className="absolute inset-0">
         <Image
-          src={`https://image.tmdb.org/t/p/original${image}`}
+          src={image}
           alt={title}
           fill={true}
           className="w-full h-full object-cover "
@@ -34,7 +34,7 @@ export function BannerTrandingMovie({
       </div>
 
       <div className="container relative">
-        <div className="max-w-[300px]">
+        <div className="max-w-[360px]">
           <div className="uppercase text-primary font-semibold text-[12px] tracking-[1.2] mb-[8px]">
             trending #{number}
           </div>
