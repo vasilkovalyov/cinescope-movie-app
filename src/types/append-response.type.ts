@@ -28,3 +28,9 @@ export interface AppendResponseKeywords {
     keywords: MovieKeyword[];
   };
 }
+
+export type TopTrandingMoviesAppendResponseParams = {
+  language?: string;
+  includes?: MovieAppendResponseIncludeOption[];
+  topSize: number;
+};

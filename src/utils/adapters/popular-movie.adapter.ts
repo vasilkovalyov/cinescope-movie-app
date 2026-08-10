@@ -1,22 +1,12 @@
 import { SectionHomeHeroProps } from '@/components/sections';
 
-import {
-  AppendResponseCredits,
-  AppendResponseImages,
-  AppendResponseKeywords,
-  AppendResponseVideos,
-} from '@/types/append-response.type';
+import { AppendResponseCredits, AppendResponseVideos } from '@/types/append-response.type';
 import { MovieDetails } from '@/types/movie/movie-details.type';
 
 import { getFormatRuntime } from '../common';
 
-export function trendingMovieAdapter(
-  movie: MovieDetails<
-    AppendResponseCredits,
-    AppendResponseImages,
-    AppendResponseKeywords,
-    AppendResponseVideos
-  >,
+export function popularMovieAdapter(
+  movie: MovieDetails<AppendResponseCredits, undefined, undefined, AppendResponseVideos>,
 ): SectionHomeHeroProps {
   const {
     id,

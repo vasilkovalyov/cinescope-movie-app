@@ -1,5 +1,6 @@
-import { Star } from 'lucide-react';
 import { Fragment } from 'react/jsx-runtime';
+
+import { Rating } from './rating';
 
 interface MovieMetaProps {
   rating: string;
@@ -13,10 +14,7 @@ export function MovieMeta({ rating, details }: MovieMetaProps) {
   return (
     <ul className="flex flex-wrap items-center gap-[20px] mb-[24px] text-primary-dark-text">
       <li>
-        <span className="flex items-center gap-[6px] text-success">
-          <Star width={20} height={20} fill="currentColor" color="currentColor" />
-          <span className="text-base">{rating}</span>
-        </span>
+        <Rating value={rating} />
       </li>
       {details.map(({ value, id }, index, list) => (
         <Fragment key={id}>

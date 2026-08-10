@@ -1,17 +1,22 @@
-import { getSingleTrendingMovie } from '@/api/get-single-trending-movie';
+import { getPopularMovieDetails, getTopTrendingMovies } from '@/api';
 
-import { SectionHomeHero } from '@/components/sections';
+import { SectionHomeHero, SectionTopTrandingMovies } from '@/components/sections';
 
-import { trendingMovieAdapter } from '@/utils/adapters';
+import { popularMovieAdapter, topTrendingMoviesAdapter } from '@/utils/adapters';
 
 export default async function Home() {
-  const data = await getSingleTrendingMovie({
-    includes: ['credits', 'images', 'keywords', 'videos'],
+  const popularMovie = await getPopularMovieDetails({
+    includes: ['credits', 'videos'],
+  });
+
+  const topTrendingMovies = await getTopTrendingMovies({
+    topSize: 5,
   });
 
   return (
     <>
-      <SectionHomeHero {...trendingMovieAdapter(data)} />
+      <SectionHomeHero {...popularMovieAdapter(popularMovie)} />
+      <SectionTopTrandingMovies items={topTrendingMoviesAdapter(topTrendingMovies)} />
     </>
   );
 }

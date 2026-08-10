@@ -16,9 +16,10 @@ const buttonVariants = cva(
           'border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50',
         destructive:
           'bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40',
-        link: 'text-primary underline-offset-4 hover:underline',
+        link: 'text-primary p-0 hover:text-primary-hover',
       },
       size: {
+        none: 'p-0',
         default: 'py-[8px] px-[16px]',
         xs: 'py-[10px] px-[20px]',
         lg: 'py-[10px] px-[18px] md:text-base md:py-[14px] md:px-[24px]',
