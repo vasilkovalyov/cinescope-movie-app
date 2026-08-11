@@ -1,8 +1,9 @@
-import type { PreviewMovieCardProps } from '@/components/common';
+import type { PreviewMovieCardProps, PreviewPersonCardProps } from '@/components/common';
 
 import { PAGES } from '@/constants';
 
 import { MovieResolved, TVSeriesDetails, TVSeriesNetwork } from '@/types/movie';
+import { People } from '@/types/people.type';
 
 import { getImageFullUrl, roundToDecimal } from '../common';
 
@@ -48,4 +49,16 @@ export function listTVSeriesPreviewAdapter(tvSeries: TVSeriesDetails[]): Preview
       return movieProps;
     },
   );
+}
+
+export function listPeoplePreviewAdapter(people: People[]): PreviewPersonCardProps[] {
+  return people.map<PreviewPersonCardProps>(({ id, profile_path, name, known_for_department }) => {
+    return {
+      id,
+      image: profile_path ? getImageFullUrl(profile_path) : null,
+      link: `${PAGES.person}/${id}`,
+      title: name,
+      subtitleInfo: known_for_department,
+    };
+  });
 }

@@ -1,4 +1,4 @@
-import { TVSeriesApi } from '@/api';
+import { PeopleApi, TVSeriesApi } from '@/api';
 import { GenresApi, MoviesApi } from '@/api';
 
 import { SectionHomeHero, SectionListPreview, SectionTopRatedMovies } from '@/components/sections';
@@ -8,6 +8,7 @@ import { TOP_RATE_COUNT } from '@/constants/common.constant';
 
 import {
   listMoviesPreviewAdapter,
+  listPeoplePreviewAdapter,
   listTVSeriesPreviewAdapter,
   popularMovieHomeHeroAdapter,
   topRatedMoviesAdapter,
@@ -20,6 +21,7 @@ export default async function Home() {
   });
 
   const tvSeriesApi = new TVSeriesApi();
+  const peopleApi = new PeopleApi();
 
   const popularMovie = await movieApi.getPopularMovieDetails({
     includes: ['credits', 'videos'],
@@ -35,6 +37,8 @@ export default async function Home() {
 
   const popularTVSeries = await tvSeriesApi.getPopularList();
   const topRatedTVSeries = await tvSeriesApi.getTopRatedList();
+
+  const popularPeople = await peopleApi.getPopularList();
 
   return (
     <>
@@ -87,13 +91,13 @@ export default async function Home() {
         type="movie"
         items={listTVSeriesPreviewAdapter(topRatedTVSeries)}
       />
-      {/* <SectionListPreview
+      <SectionListPreview
         title="Notable People"
         subtitle="Directors, actors, and creators to know"
         link={PAGES.people}
         type="person"
-        items={[]}
-      /> */}
+        items={listPeoplePreviewAdapter(popularPeople.results)}
+      />
     </>
   );
 }

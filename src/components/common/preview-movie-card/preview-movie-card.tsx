@@ -26,7 +26,7 @@ export function PreviewMovieCard({
           {image ? (
             <Image
               alt={title}
-              className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               src={image}
               width={180}
               height={270}

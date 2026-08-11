@@ -12,4 +12,5 @@ export const API_REQUESTS = {
   moviePopular: '/movie/popular',
   movieNowPlaying: '/movie/now_playing',
   movieSingle: '/movie/',
+  peoplePopular: '/person/popular',
 };
