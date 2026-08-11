@@ -1,24 +1,23 @@
 import { MovieGenre } from './movie-genre.type';
 
-export interface Movie {
+export interface TVSeries {
   adult: boolean;
   backdrop_path: string;
+  first_air_date: string;
   genre_ids: number[];
   id: number;
-  media_type: string;
+  name: string;
+  origin_country: string[];
   original_language: string;
-  original_title: string;
+  original_name: string;
   overview: string;
   popularity: number;
-  poster_path: string | null;
-  release_date: string;
+  poster_path: string;
   softcore: boolean;
-  title: string;
-  video: boolean;
   vote_average: number;
   vote_count: number;
 }
 
-export interface MovieResolved extends Omit<Movie, 'genre_ids'> {
+export interface TVSeriesResolved extends Omit<TVSeries, 'genre_ids'> {
   genres: MovieGenre[];
 }

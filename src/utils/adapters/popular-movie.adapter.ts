@@ -1,13 +1,10 @@
 import { SectionHomeHeroProps } from '@/components/sections';
 
-import { AppendResponseCredits, AppendResponseVideos } from '@/types/append-response.type';
-import { MovieDetails } from '@/types/movie/movie-details.type';
+import { MovieHomeHeroDetails } from '@/types/movie/movie-details.type';
 
 import { getFormatRuntime, getImageFullUrl, roundToDecimal } from '../common';
 
-export function popularMovieAdapter(
-  movie: MovieDetails<AppendResponseCredits, undefined, undefined, AppendResponseVideos>,
-): SectionHomeHeroProps {
+export function popularMovieHomeHeroAdapter(movie: MovieHomeHeroDetails): SectionHomeHeroProps {
   const {
     id,
     title,

@@ -1,6 +1,4 @@
-export { getMovieDetails } from './movie-details';
-export { getMoviePopular } from './movie-popular';
-export { getTrendingMovies } from './movie-trending';
-export { getPopularMovieDetails } from './popular-movie-details';
-export { getTopRatedMovies } from './top-rated-movies';
-export { getMovieTopRated } from './movie-top-rated';
+export { MoviesApi } from './movies';
+export { TVSeriesApi } from './tv-series';
+export { GenresApi } from './genres';
+export type { GenresDictionary } from './genres';

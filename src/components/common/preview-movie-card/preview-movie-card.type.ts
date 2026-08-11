@@ -7,5 +7,6 @@ export interface PreviewMovieCardProps {
   voteAverage: number;
   genres: MovieGenre[];
   link: string;
-  image: string;
+  image: string | null;
+  status?: string;
 }

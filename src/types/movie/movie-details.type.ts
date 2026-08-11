@@ -1,3 +1,9 @@
+import {
+  AppendResponseCredits,
+  AppendResponseImages,
+  AppendResponseKeywords,
+  AppendResponseVideos,
+} from '../append-response.type';
 import { AppendField } from '../utils.type';
 import { MovieGenre } from './movie-genre.type';
 import { MovieProductionCompany } from './movie-production-companies.type';
@@ -23,7 +29,7 @@ export type MovieDetails<
   original_title: string;
   overview: string;
   popularity: number;
-  poster_path: string;
+  poster_path: string | null;
   production_companies: MovieProductionCompany[];
   production_countries: MovieProductionCountry[];
   release_date: string;
@@ -41,3 +47,17 @@ export type MovieDetails<
   AppendField<'videos', VideosType> &
   AppendField<'images', ImagesType> &
   AppendField<'keywords', KeywordsType>;
+
+export type MovieHomeHeroDetails = MovieDetails<
+  AppendResponseCredits,
+  undefined,
+  undefined,
+  AppendResponseVideos
+>;
+
+export type MovieFullDetails = MovieDetails<
+  AppendResponseCredits,
+  AppendResponseImages,
+  AppendResponseVideos,
+  AppendResponseKeywords
+>;

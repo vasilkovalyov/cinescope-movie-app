@@ -2,7 +2,7 @@ import { MOVIE_API_URL } from '@/constants';
 
 type FetchGetParams = Record<string, string | number | boolean | undefined>;
 
-export async function fetchGetApiTMDB<T>(url: string, params?: FetchGetParams) {
+export async function fetchGetApiTMDB<T>(url: string, params?: FetchGetParams): Promise<T> {
   const searchParams = params
     ? new URLSearchParams(
         Object.entries(params)

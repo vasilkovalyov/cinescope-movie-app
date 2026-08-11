@@ -1,4 +1,5 @@
 import { IMAGE_URL } from '@/constants';
+import { PREVIEW_LIST_COUNT } from '@/constants/common.constant';
 
 export function getFormatRuntime(runtime: number): string {
   const hours = Math.floor(runtime / 60);
@@ -22,4 +23,8 @@ export function getRatingColor(rating: number) {
   if (rating >= 4) return 'text-orange-500';
 
   return 'text-red-500';
+}
+
+export function limitArray<T>(array: readonly T[], limit = PREVIEW_LIST_COUNT): T[] {
+  return array.slice(0, limit);
 }

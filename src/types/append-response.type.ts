@@ -3,7 +3,7 @@ import { MovieVideo } from './movie/movie-video.type';
 
 export type MovieAppendResponseIncludeOption = 'credits' | 'videos' | 'images' | 'keywords';
 
-export type MovieAppendResponseParams = {
+export type AppendRequestParams = {
   language?: string;
   includes?: MovieAppendResponseIncludeOption[];
 };
@@ -29,8 +29,6 @@ export interface AppendResponseKeywords {
   };
 }
 
-export type TopTrandingMoviesAppendResponseParams = {
-  language?: string;
-  includes?: MovieAppendResponseIncludeOption[];
-  topSize: number;
-};
+export interface TopMoviesAppendRequestParams extends AppendRequestParams {
+  topSize?: number;
+}
