@@ -35,7 +35,7 @@ export function BannerRatedMovie({
       <div className="container relative">
         <div className="max-w-[360px] py-[20px]">
           <div className="pretitle mb-[8px]">trending #{number}</div>
-          <h3 className="mb-[8px] leading-[1]">{title}</h3>
+          <h2 className="mb-[8px] leading-[1]">{title}</h2>
           <div className="flex items-center gap-[12px] mb-[16px]">
             <Rating value={rating} size="sm" />
             <GenreList items={genres} gap="sm" color="secondary" />
@@ -43,7 +43,7 @@ export function BannerRatedMovie({
           <Button asChild variant="link" size="none">
             <Link href={`${PAGES.movies}/${id}`}>
               View details
-              <ChevronRight />
+              <ChevronRight aria-hidden="true" />
             </Link>
           </Button>
         </div>

@@ -42,9 +42,10 @@ export function SectionHomeHero({
         <Image
           src={image}
           alt={title}
-          fill={true}
           className="object-cover"
-          priority
+          fill
+          preload
+          fetchPriority="high"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/70 to-transparent" />
@@ -68,14 +69,14 @@ export function SectionHomeHero({
             {trailerUrl && (
               <MovieTrailerToggler trailerUrl={trailerUrl}>
                 <Button className="capitalize" size="lg">
-                  <PlayIcon fill="text-dark" />
+                  <PlayIcon aria-hidden="true" fill="text-dark" />
                   watch trailer
                 </Button>
               </MovieTrailerToggler>
             )}
             <Button className="capitalize" variant="secondary" size="lg" asChild>
               <Link href={`/movie/${id}`}>
-                <InfoIcon />
+                <InfoIcon aria-hidden="true" />
                 more info
               </Link>
             </Button>

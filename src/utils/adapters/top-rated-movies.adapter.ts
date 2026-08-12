@@ -2,7 +2,7 @@ import { BannerRatedMovieProps } from '@/components/common';
 
 import { MovieResolved } from '@/types/movie';
 
-import { getImageFullUrl, roundToDecimal } from '../common';
+import { getImageUrl, roundToDecimal } from '../common';
 
 export function topRatedMoviesAdapter(movies: MovieResolved[]): BannerRatedMovieProps[] {
   return movies.map(({ id, genres, backdrop_path, title, vote_average }, index) => {
@@ -12,7 +12,7 @@ export function topRatedMoviesAdapter(movies: MovieResolved[]): BannerRatedMovie
       title,
       rating: roundToDecimal(vote_average),
       genres,
-      image: getImageFullUrl(backdrop_path),
+      image: getImageUrl(backdrop_path, 'wide'),
     };
 
     return movieProps;

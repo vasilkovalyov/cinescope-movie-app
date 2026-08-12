@@ -25,7 +25,7 @@ export function PreviewMovieCard({
         <div className="relative overflow-hidden rounded-[12px] bg-navigation-mobile-bg aspect-[2/3] mb-[12px]">
           {image ? (
             <Image
-              alt={title}
+              alt=""
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               src={image}
               width={180}
@@ -47,9 +47,9 @@ export function PreviewMovieCard({
             {genres.length ? <GenreList items={genres} color="secondary" gap="sm" /> : null}
           </div>
         </div>
-        <h6 className="font-base line-clamp-2 mb-[4px] group-hover:text-primary transition-colors">
+        <h3 className="text-[14px] font-base line-clamp-2 mb-[4px] group-hover:text-primary transition-colors">
           {title}
-        </h6>
+        </h3>
         <p className="text-primary-dark-text line-clamp-2 text-[12px]">{subtitleInfo}</p>
       </Link>
       <div className="absolute top-[8px] left-[8px]">
@@ -62,10 +62,10 @@ export function PreviewMovieCard({
           </Badge>
         )}
         <FavoriteToggler
-          aria-label="Add to favorites"
+          aria-label={`Add ${title} to favorites`}
           className="size-[32px] rounded-[8px] flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 bg-dark/80 backdrop-blur-[8px] text-primary-dark-text hover:text-danger aria-pressed:bg-primary aria-pressed:text-dark cursor-pointer"
         >
-          <Heart />
+          <Heart aria-hidden="true" />
         </FavoriteToggler>
       </div>
     </div>

@@ -25,14 +25,14 @@ export function SectionListPreview({
       <div className="container">
         <div className="flex flex-col flex-wrap gap-[12px] justify-between mb-[24px] sm:items-end sm:flex-row">
           <div>
-            <h3>{title}</h3>
+            <h2>{title}</h2>
             {subtitle && <p>{subtitle}</p>}
           </div>
           <div>
             <Button asChild variant="link" size="none">
               <Link href={link}>
                 View all
-                <ChevronRight />
+                <ChevronRight aria-hidden="true" />
               </Link>
             </Button>
           </div>

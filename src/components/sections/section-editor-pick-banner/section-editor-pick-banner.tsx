@@ -38,7 +38,7 @@ export async function SectionEditorPickBanner(props: SectionEditorPickBannerProp
             </div>
             <div className="p-[32px] md:p-[40px]">
               <span className="pretitle mb-[12px]">Editor`s Pick</span>
-              <h3 className="font-display text-light mb-[12px]">{title}</h3>
+              <h2 className="font-display text-light mb-[12px]">{title}</h2>
               <p className="text-secondary-dark-text mb-[20px] line-clamp-3">{overview}</p>
               <div className="flex items-center gap-[12px] mb-[24px]">
                 <Rating value={rating} />

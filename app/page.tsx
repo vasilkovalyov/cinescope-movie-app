@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { GenresApi, getPopularMovieDetails, getTopRatedList } from '@/api';
+import { GenresApi, getPopularMovieDetails } from '@/api';
 
 import {
   BlockComingSoon,
@@ -8,34 +8,31 @@ import {
   BlockNowPlaying,
   BlockPopularMovies,
   BlockPopularTVShows,
+  BlockTopRatedBanner,
   BlockTopRatedFilms,
   BlockTopRatedSeries,
   BlockTrendingNow,
   SectionEditorPickBanner,
   SectionHomeHero,
   SectionListPreviewLoader,
-  SectionTopRatedMovies,
+  SectionTopRatedMoviesLoader,
 } from '@/components/sections';
 
-import { TOP_RATE_COUNT } from '@/constants/common.constant';
-
-import { popularMovieHomeHeroAdapter, topRatedMoviesAdapter } from '@/utils/adapters';
+import { popularMovieHomeHeroAdapter } from '@/utils/adapters';
 
 export default async function Home() {
-  const genresMoviesApi = await GenresApi.create('movie');
+  const [genresMoviesApi, popularMovie] = await Promise.all([
+    GenresApi.create('movie'),
+    getPopularMovieDetails({ includes: ['credits', 'videos'] }),
+  ]);
   const genres = genresMoviesApi.allGenres;
-
-  const popularMovie = await getPopularMovieDetails({
-    includes: ['credits', 'videos'],
-  });
-  const topRatedMovies = await getTopRatedList(genres, {
-    topSize: TOP_RATE_COUNT,
-  });
 
   return (
     <>
       <SectionHomeHero {...popularMovieHomeHeroAdapter(popularMovie)} />
-      <SectionTopRatedMovies items={topRatedMoviesAdapter(topRatedMovies.results)} />
+      <Suspense fallback={<SectionTopRatedMoviesLoader />}>
+        <BlockTopRatedBanner genres={genres} />
+      </Suspense>
       <Suspense fallback={<SectionListPreviewLoader />}>
         <BlockTrendingNow genres={genres} />
       </Suspense>

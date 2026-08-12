@@ -1,6 +1,6 @@
 export {
   getFormatRuntime,
-  getImageFullUrl,
+  getImageUrl,
   roundToDecimal,
   getRatingColor,
   limitArray,

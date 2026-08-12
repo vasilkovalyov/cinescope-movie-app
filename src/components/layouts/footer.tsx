@@ -106,7 +106,7 @@ export function Footer() {
               &copy; {new Date().getFullYear()} CineScope. This product uses the TMDB API but is not
               endorsed or certified by TMDB.
             </p>
-            <Image src="/images/tmbd.svg" alt="tmbd" width={92} height={12} />
+            <Image src="/images/tmbd.svg" alt="The Movie Database (TMDB) logo" width={92} height={12} />
           </div>
         </div>
       </div>

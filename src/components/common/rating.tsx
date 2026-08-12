@@ -26,6 +26,8 @@ export function Rating({ value, size = 'md' }: RatingProps) {
 
   return (
     <span
+      role="img"
+      aria-label={`Rating: ${value} out of 10`}
       className={cn(
         'flex items-center',
         {
@@ -35,8 +37,15 @@ export function Rating({ value, size = 'md' }: RatingProps) {
         colorClassName,
       )}
     >
-      <Star width={iconSize} height={iconSize} fill="currentColor" color="currentColor" />
+      <Star
+        aria-hidden="true"
+        width={iconSize}
+        height={iconSize}
+        fill="currentColor"
+        color="currentColor"
+      />
       <span
+        aria-hidden="true"
         className={cn({
           'text-[12px]': size === 'sm',
           'text-[14px]': size === 'md',

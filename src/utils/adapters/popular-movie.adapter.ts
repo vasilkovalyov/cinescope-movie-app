@@ -2,7 +2,7 @@ import { SectionHomeHeroProps } from '@/components/sections';
 
 import { MovieHomeHeroDetails } from '@/types/movie/movie-details.type';
 
-import { getFormatRuntime, getImageFullUrl, getTrailerUrl, roundToDecimal } from '../common';
+import { getFormatRuntime, getImageUrl, getTrailerUrl, roundToDecimal } from '../common';
 
 export function popularMovieHomeHeroAdapter(movie: MovieHomeHeroDetails): SectionHomeHeroProps {
   const {
@@ -25,7 +25,7 @@ export function popularMovieHomeHeroAdapter(movie: MovieHomeHeroDetails): Sectio
     title: title,
     tagline: tagline,
     overview: overview,
-    image: getImageFullUrl(backdrop_path),
+    image: getImageUrl(backdrop_path, 'wide'),
     rating: roundToDecimal(vote_average),
     releaseDate: new Date(release_date).getFullYear().toString(),
     director: director?.name || '',

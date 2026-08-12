@@ -1,10 +1,12 @@
 import { IMAGE_URL } from '@/constants';
 import {
+  IMAGE_TYPE_URL,
   MOVIE_RATING_CATEGORY,
   PREVIEW_LIST_COUNT,
   YOUTUBE_EMBED_URL,
 } from '@/constants/common.constant';
 
+import { ImageSizeType } from '@/types/image.type';
 import { Movie } from '@/types/movie';
 import { MovieVideo } from '@/types/movie/movie-video.type';
 
@@ -15,8 +17,8 @@ export function getFormatRuntime(runtime: number): string {
   return `${hours}h ${minutes}m`;
 }
 
-export function getImageFullUrl(imageName: string): string {
-  return `${IMAGE_URL}${imageName}`;
+export function getImageUrl(imageName: string, sizeType: ImageSizeType = 'original'): string {
+  return `${IMAGE_URL}${IMAGE_TYPE_URL[sizeType]}${imageName}`;
 }
 
 export function roundToDecimal(value: number, decimals = 1): number {
