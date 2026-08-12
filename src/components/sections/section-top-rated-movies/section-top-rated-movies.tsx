@@ -1,12 +1,12 @@
 import { BannerRatedMovie, type BannerRatedMovieProps, SwiperCarousel } from '@/components/common';
 
 interface SectionTopRatedMoviesProps {
-  items: BannerRatedMovieProps[];
+  movies: BannerRatedMovieProps[];
 }
 
-export function SectionTopRatedMovies({ items }: SectionTopRatedMoviesProps) {
+export function SectionTopRatedMovies({ movies }: SectionTopRatedMoviesProps) {
   return (
-    <section className="section-top-rated-movies">
+    <section className="section-top-rated-movies py-[40px]">
       <div className="container">
         <SwiperCarousel
           effect="fade"
@@ -15,8 +15,8 @@ export function SectionTopRatedMovies({ items }: SectionTopRatedMoviesProps) {
             disableOnInteraction: true,
           }}
         >
-          {items.map((item) => (
-            <BannerRatedMovie key={item.number} {...item} />
+          {movies.map((movie) => (
+            <BannerRatedMovie key={movie.number} {...movie} />
           ))}
         </SwiperCarousel>
       </div>

@@ -1,4 +1,4 @@
-import { EditorPickBannerProps } from '@/components/sections';
+import { SectionEditorPickBannerProps } from '@/components/sections';
 
 import { PAGES } from '@/constants';
 
@@ -6,7 +6,7 @@ import { MovieResolved } from '@/types/movie';
 
 import { getImageUrl, roundToDecimal } from '../common';
 
-export function editorSectionPickBannerAdapter(movie: MovieResolved): EditorPickBannerProps {
+export function editorSectionPickBannerAdapter(movie: MovieResolved): SectionEditorPickBannerProps {
   const { id, title, overview, backdrop_path, vote_average, genres } = movie;
 
   return {

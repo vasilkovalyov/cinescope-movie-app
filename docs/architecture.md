@@ -58,7 +58,7 @@ The default is a Server Component; `'use client'` is added only where interactiv
   - `src/features/favorite-toggler.tsx` (interactive toggle, currently stateless beyond the underlying `Toggle` primitive).
   - Most `src/components/ui/*` primitives that wrap Radix (Dialog, Select, Tabs, etc.) are client components internally, consistent with `components.json`'s `"rsc": false` shadcn setting.
 
-`SectionHomeHero`, `SectionListPreview`, `SectionTopRatedMovies`, `SectionEditorPickBanner`, `BannerRatedMovie`, `PreviewMovieCard`, `PreviewPersonCard`, and every `Block*` component are themselves Server Components that *render* client children (`MovieTrailerToggler`, `SwiperCarousel`, `FavoriteToggler`) — a standard "server component composes client leaf" pattern. When adding new interactive UI, keep the interactive part as small and as low in the tree as possible rather than promoting a whole section to `'use client'`.
+`SectionHomeHero`, `SectionListPreview`, `SectionTopRatedMovies`, `SectionEditorPickBanner`, `BannerRatedMovie`, `PreviewMovieCard`, `PreviewPersonCard`, and every `Block*` component are themselves Server Components that _render_ client children (`MovieTrailerToggler`, `SwiperCarousel`, `FavoriteToggler`) — a standard "server component composes client leaf" pattern. When adding new interactive UI, keep the interactive part as small and as low in the tree as possible rather than promoting a whole section to `'use client'`.
 
 ## 4. Data fetching & the API layer
 
@@ -80,7 +80,7 @@ The API layer used to be three classes (`MoviesApi`, `TVSeriesApi`, `PeopleApi`)
 
 **Barrel re-exports and name collisions**: `movies.ts`, `tv-series.ts`, and `people.ts` each define a `getPopularList`, and `movies.ts`/`tv-series.ts` both define `getTopRatedList`. `src/api/index.ts` re-exports the movie versions under their bare names and renames the others: `getPopularList as getPopularTVSeriesList` / `getTopRatedList as getTopRatedTVSeriesList` from `tv-series.ts`, `getPopularList as getPeoplePopularList` from `people.ts`. Anything imported as `{ getPopularList }` or `{ getTopRatedList }` from `@/api` is always the movie version.
 
-**Why the class-based design was dropped**: `MoviesApi` used to be constructed as `new MoviesApi({ genres })` and called as `movieApi.getPopularList()`, etc. Two problems motivated the change to plain functions with an explicit `genres` parameter: (1) three of the class's methods (the detail-fetchers) never touched the injected `genres`, so the class implied more shared state/cohesion than actually existed; (2) `getTrendingList` existed both as an instance method (using `this._genres`) *and* as a duplicate standalone function with the same body (using a `genres` parameter) — a sign the class/function boundary wasn't being applied consistently. The current design has exactly one implementation per operation, and every function's signature makes its actual data dependency (or lack of one) explicit. `TVSeriesApi`/`PeopleApi` never had meaningful constructor state to begin with, so they collapsed to plain functions with no `genres`-style tradeoff at all.
+**Why the class-based design was dropped**: `MoviesApi` used to be constructed as `new MoviesApi({ genres })` and called as `movieApi.getPopularList()`, etc. Two problems motivated the change to plain functions with an explicit `genres` parameter: (1) three of the class's methods (the detail-fetchers) never touched the injected `genres`, so the class implied more shared state/cohesion than actually existed; (2) `getTrendingList` existed both as an instance method (using `this._genres`) _and_ as a duplicate standalone function with the same body (using a `genres` parameter) — a sign the class/function boundary wasn't being applied consistently. The current design has exactly one implementation per operation, and every function's signature makes its actual data dependency (or lack of one) explicit. `TVSeriesApi`/`PeopleApi` never had meaningful constructor state to begin with, so they collapsed to plain functions with no `genres`-style tradeoff at all.
 
 ### 4.3 Home page composition (`app/page.tsx`) and section "blocks"
 
@@ -102,16 +102,16 @@ The API layer used to be three classes (`MoviesApi`, `TVSeriesApi`, `PeopleApi`)
 
 Every `Block*` component (`src/components/sections/block-*.tsx`) is a small `async` Server Component that owns one TMDB call, one adapter call, and renders one `SectionListPreview`:
 
-| Component | Calls | Needs `genres`? |
-|---|---|---|
-| `BlockTrendingNow` | `getTrendingList(genres)` | yes |
-| `BlockPopularMovies` | `getPopularList(genres)` | yes |
-| `BlockNowPlaying` | `getNowPlayingList(genres)` | yes |
-| `BlockTopRatedFilms` | `getTopRatedList(genres)` (no `topSize` — default `limitArray` truncation) | yes |
-| `BlockComingSoon` | `getUpcomingList(genres)` | yes |
-| `BlockPopularTVShows` | `getPopularTVSeriesList()` | no |
-| `BlockTopRatedSeries` | `getTopRatedTVSeriesList()` | no |
-| `BlockNotablePeople` | `getPeoplePopularList()` | no |
+| Component             | Calls                                                                      | Needs `genres`? |
+| --------------------- | -------------------------------------------------------------------------- | --------------- |
+| `BlockTrendingNow`    | `getTrendingList(genres)`                                                  | yes             |
+| `BlockPopularMovies`  | `getPopularList(genres)`                                                   | yes             |
+| `BlockNowPlaying`     | `getNowPlayingList(genres)`                                                | yes             |
+| `BlockTopRatedFilms`  | `getTopRatedList(genres)` (no `topSize` — default `limitArray` truncation) | yes             |
+| `BlockComingSoon`     | `getUpcomingList(genres)`                                                  | yes             |
+| `BlockPopularTVShows` | `getPopularTVSeriesList()`                                                 | no              |
+| `BlockTopRatedSeries` | `getTopRatedTVSeriesList()`                                                | no              |
+| `BlockNotablePeople`  | `getPeoplePopularList()`                                                   | no              |
 
 `SectionEditorPickBanner` (see §6) follows the same self-fetching shape but is named `Section*`, not `Block*`, and is not a `SectionListPreview` wrapper — it renders its own bespoke banner markup.
 
@@ -125,7 +125,7 @@ Note `getTopRatedList` is still called twice per page load with different argume
 
 Components never receive these raw API types directly. Instead, `src/utils/adapters/*` contains pure mapping functions that convert API types into the exact prop shapes the presentational components declare in their own `*.type.ts` files:
 
-- `popular-movie.adapter.ts` → `popularMovieHomeHeroAdapter(MovieHomeHeroDetails) => SectionHomeHeroProps` (formats runtime, rounds rating, resolves director from `credits.crew`, extracts trailer URL from `videos.results`).
+- `popular-movie.adapter.ts` → `popularMovieHomeHeroAdapter(MovieHomeHeroDetails) => SectionHeroLargeProps` (formats runtime, rounds rating, resolves director from `credits.crew`, extracts trailer URL from `videos.results`).
 - `top-rated-movies.adapter.ts` → `topRatedMoviesAdapter(MovieResolved[]) => BannerRatedMovieProps[]`.
 - `list-preview.adapter.ts` → `listMoviesPreviewAdapter`, `listTVSeriesPreviewAdapter`, `listPeoplePreviewAdapter`, each producing `PreviewMovieCardProps[]`/`PreviewPersonCardProps[]`.
 - `editor-pick-banner.adapter.ts` → `editorSectionPickBannerAdapter(MovieResolved) => EditorPickBannerProps`. Note `EditorPickBannerProps` is defined in and imported from `@/components/sections` (specifically `section-editor-pick-banner.type.ts`), not `@/components/common` — the presentational banner markup now lives inside `SectionEditorPickBanner` itself rather than a separate `components/common` component.
@@ -146,8 +146,9 @@ Components never receive these raw API types directly. Instead, `src/utils/adapt
 - **`components/sections/`** — two different kinds of components live here, and the `Section*`/`Block*` naming only partially tells you which is which:
   - **Pure/presentational** (`SectionHomeHero`, `SectionTopRatedMovies`, `SectionListPreview`) — receive already-adapted `*Props` from a caller, fetch nothing themselves. `SectionListPreview` is polymorphic over a discriminated union (`type: 'movie' | 'person'`) that changes both the expected `items` shape and which card component renders.
   - **Self-fetching** (`SectionEditorPickBanner`, and every `BlockTrendingNow` / `BlockPopularMovies` / `BlockNowPlaying` / `BlockTopRatedFilms` / `BlockComingSoon` / `BlockPopularTVShows` / `BlockTopRatedSeries` / `BlockNotablePeople`) — `async` Server Components that take only raw inputs (`{ genres }` or nothing), call an `@/api` function themselves, adapt the result, and render. `SectionEditorPickBanner` renders its own bespoke markup; the `Block*` components each render a `SectionListPreview`. See §4.3 for the full breakdown of which block calls what.
-  
+
   When adding a new home-page section backed by TMDB data, follow the self-fetching pattern (new `block-*.tsx`, or extend `SectionEditorPickBanner`'s approach for something that isn't a `SectionListPreview`) rather than fetching in `app/page.tsx` and passing props down.
+
 - **`components/layouts/`** — site chrome: `BaseLayout` (wraps `Header` + `main` + `Footer`), `Header` (composes `HeaderStickyWrapper` + `HeaderNavigation` + `HeaderMobileMenu`, colocated under `header/components/`), `Footer` (hardcodes its own nav column data inline rather than reusing `HEADER_NAVIGATION`).
 - **`features/`** — components with actual interactive behavior beyond simple UI state (currently just `FavoriteToggler`, which wraps the `Toggle` primitive with no persistence layer behind it yet — favoriting doesn't do anything beyond visual toggle state today).
 

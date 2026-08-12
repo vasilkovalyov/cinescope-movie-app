@@ -1,10 +1,10 @@
-import { SectionHomeHeroProps } from '@/components/sections';
+import { SectionHeroLargeProps } from '@/components/sections';
 
 import { MovieHomeHeroDetails } from '@/types/movie/movie-details.type';
 
 import { getFormatRuntime, getImageUrl, getTrailerUrl, roundToDecimal } from '../common';
 
-export function popularMovieHomeHeroAdapter(movie: MovieHomeHeroDetails): SectionHomeHeroProps {
+export function popularMovieHomeHeroAdapter(movie: MovieHomeHeroDetails): SectionHeroLargeProps {
   const {
     id,
     title,

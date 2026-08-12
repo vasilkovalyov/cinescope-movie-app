@@ -1,4 +1,4 @@
-export interface SectionHomeHeroProps {
+export interface SectionHeroLargeProps {
   id: string;
   title: string;
   tagline: string;

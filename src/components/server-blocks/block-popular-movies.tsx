@@ -4,7 +4,7 @@ import { PAGES } from '@/constants';
 
 import { listMoviesPreviewAdapter } from '@/utils/adapters';
 
-import { SectionListPreview } from './section-list-preview';
+import { SectionListPreview } from '../sections';
 
 interface BlockPopularMoviesProps {
   genres: GenresDictionary;

@@ -1,0 +1,11 @@
+export { BlockTopRatedBanner } from './block-top-rated-banner';
+export { BlockTrendingNow } from './block-trending-now';
+export { BlockPopularMovies } from './block-popular-movies';
+export { BlockNowPlaying } from './block-now-playing';
+export { BlockTopRatedFilms } from './block-top-rated-films';
+export { BlockComingSoon } from './block-coming-soon';
+export { BlockPopularTVShows } from './block-popular-tv-shows';
+export { BlockTopRatedSeries } from './block-top-rated-series';
+export { BlockNotablePeople } from './block-notable-people';
+export { BlockHomeHero as BlockHeroLarge } from './block-home-hero';
+export { BlockEditorPickBanner } from './block-editor-pick-banner';

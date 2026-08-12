@@ -4,7 +4,7 @@ import { PAGES } from '@/constants';
 
 import { listTVSeriesPreviewAdapter } from '@/utils/adapters';
 
-import { SectionListPreview } from './section-list-preview';
+import { SectionListPreview } from '../sections';
 
 export async function BlockPopularTVShows() {
   const popularTVSeries = await getPopularTVSeriesList();

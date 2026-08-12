@@ -1,24 +1,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { getMovieEditorPick } from '@/api';
-
 import { GenreList } from '@/components/common';
 import { Rating } from '@/components/common/rating';
 import { Button } from '@/components/ui';
 
-import { editorSectionPickBannerAdapter } from '@/utils/adapters';
-
 import { SectionEditorPickBannerProps } from './section-editor-pick-banner.type';
 
-export async function SectionEditorPickBanner(props: SectionEditorPickBannerProps) {
-  const editorPickMovie = await getMovieEditorPick(props.genres);
-
-  if (!editorPickMovie) return;
-
-  const { image, title, overview, rating, genres, link } =
-    editorSectionPickBannerAdapter(editorPickMovie);
-
+export async function SectionEditorPickBanner({
+  image,
+  title,
+  overview,
+  rating,
+  genres,
+  link,
+}: SectionEditorPickBannerProps) {
   return (
     <section>
       <div className="container">

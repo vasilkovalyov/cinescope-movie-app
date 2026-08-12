@@ -4,7 +4,7 @@ import { PAGES } from '@/constants';
 
 import { listPeoplePreviewAdapter } from '@/utils/adapters';
 
-import { SectionListPreview } from './section-list-preview';
+import { SectionListPreview } from '../sections';
 
 export async function BlockNotablePeople() {
   const popularPeople = await getPeoplePopularList();

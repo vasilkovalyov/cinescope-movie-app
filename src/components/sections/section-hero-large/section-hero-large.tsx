@@ -6,9 +6,9 @@ import { InfoIcon, PlayIcon } from 'lucide-react';
 import { MovieMeta, MovieTrailerToggler } from '@/components/common';
 import { Badge, Button } from '@/components/ui';
 
-import { SectionHomeHeroProps } from './section-home-hero.type';
+import { SectionHeroLargeProps } from './section-hero-large.type';
 
-export function SectionHomeHero({
+export function SectionHeroLarge({
   id,
   title,
   tagline,
@@ -20,7 +20,7 @@ export function SectionHomeHero({
   director,
   runtime,
   trailerUrl,
-}: SectionHomeHeroProps) {
+}: SectionHeroLargeProps) {
   const INFO_LIST = [
     {
       id: 'date',

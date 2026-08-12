@@ -1,9 +1,12 @@
 import { Suspense } from 'react';
 
-import { GenresApi, getPopularMovieDetails } from '@/api';
+import { GenresApi } from '@/api';
 
+import { SectionListPreviewLoader, SectionTopRatedMoviesLoader } from '@/components/sections';
 import {
   BlockComingSoon,
+  BlockEditorPickBanner,
+  BlockHeroLarge,
   BlockNotablePeople,
   BlockNowPlaying,
   BlockPopularMovies,
@@ -12,24 +15,15 @@ import {
   BlockTopRatedFilms,
   BlockTopRatedSeries,
   BlockTrendingNow,
-  SectionEditorPickBanner,
-  SectionHomeHero,
-  SectionListPreviewLoader,
-  SectionTopRatedMoviesLoader,
-} from '@/components/sections';
-
-import { popularMovieHomeHeroAdapter } from '@/utils/adapters';
+} from '@/components/server-blocks';
 
 export default async function Home() {
-  const [genresMoviesApi, popularMovie] = await Promise.all([
-    GenresApi.create('movie'),
-    getPopularMovieDetails({ includes: ['credits', 'videos'] }),
-  ]);
+  const [genresMoviesApi] = await Promise.all([GenresApi.create('movie')]);
   const genres = genresMoviesApi.allGenres;
 
   return (
     <>
-      <SectionHomeHero {...popularMovieHomeHeroAdapter(popularMovie)} />
+      <BlockHeroLarge />
       <Suspense fallback={<SectionTopRatedMoviesLoader />}>
         <BlockTopRatedBanner genres={genres} />
       </Suspense>
@@ -43,7 +37,7 @@ export default async function Home() {
         <BlockNowPlaying genres={genres} />
       </Suspense>
       <Suspense>
-        <SectionEditorPickBanner genres={genres} />
+        <BlockEditorPickBanner genres={genres} />
       </Suspense>
       <Suspense fallback={<SectionListPreviewLoader />}>
         <BlockTopRatedFilms genres={genres} />
