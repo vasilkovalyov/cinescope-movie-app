@@ -9,4 +9,5 @@ export interface SectionHomeHeroProps {
   director: string;
   runtime: string;
   featureGenre: string;
+  trailerUrl: string | null;
 }

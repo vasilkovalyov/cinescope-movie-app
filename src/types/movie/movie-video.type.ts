@@ -1,3 +1,5 @@
+import { SiteType, VideoType } from '../video.type';
+
 export interface MovieVideo {
   id: string;
   iso_639_1: string;
@@ -6,7 +8,7 @@ export interface MovieVideo {
   name: string;
   official: true;
   published_at: string;
-  site: string;
+  site: SiteType;
   size: number;
-  type: string;
+  type: VideoType;
 }

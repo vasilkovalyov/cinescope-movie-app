@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { InfoIcon, PlayIcon } from 'lucide-react';
 
-import { MovieMeta } from '@/components/common';
+import { MovieMeta, MovieTrailerToggler } from '@/components/common';
 import { Badge, Button } from '@/components/ui';
 
 import { SectionHomeHeroProps } from './section-home-hero.type';
@@ -19,6 +19,7 @@ export function SectionHomeHero({
   releaseDate,
   director,
   runtime,
+  trailerUrl,
 }: SectionHomeHeroProps) {
   const INFO_LIST = [
     {
@@ -64,10 +65,14 @@ export function SectionHomeHero({
           <p className="text-base mb-[24px] line-clamp-3">{overview}</p>
           <MovieMeta rating={voteAverage} details={INFO_LIST} />
           <div className="flex gap-[12px]">
-            <Button className="capitalize" size="lg">
-              <PlayIcon fill="text-dark" />
-              watch trailer
-            </Button>
+            {trailerUrl && (
+              <MovieTrailerToggler trailerUrl={trailerUrl}>
+                <Button className="capitalize" size="lg">
+                  <PlayIcon fill="text-dark" />
+                  watch trailer
+                </Button>
+              </MovieTrailerToggler>
+            )}
             <Button className="capitalize" variant="secondary" size="lg" asChild>
               <Link href={`/movie/${id}`}>
                 <InfoIcon />

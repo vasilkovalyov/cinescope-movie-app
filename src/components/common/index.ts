@@ -8,3 +8,4 @@ export { PreviewMovieCard } from './preview-movie-card';
 export type { PreviewMovieCardProps } from './preview-movie-card';
 export { PreviewPersonCard } from './preview-person-card';
 export type { PreviewPersonCardProps } from './preview-person-card';
+export { MovieTrailerToggler } from './movie-trailer-toggler';

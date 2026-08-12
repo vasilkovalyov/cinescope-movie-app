@@ -50,14 +50,14 @@ export type MovieDetails<
 
 export type MovieHomeHeroDetails = MovieDetails<
   AppendResponseCredits,
+  AppendResponseVideos,
   undefined,
-  undefined,
-  AppendResponseVideos
+  undefined
 >;
 
 export type MovieFullDetails = MovieDetails<
   AppendResponseCredits,
-  AppendResponseImages,
   AppendResponseVideos,
+  AppendResponseImages,
   AppendResponseKeywords
 >;

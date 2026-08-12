@@ -2,7 +2,7 @@ import { SectionHomeHeroProps } from '@/components/sections';
 
 import { MovieHomeHeroDetails } from '@/types/movie/movie-details.type';
 
-import { getFormatRuntime, getImageFullUrl, roundToDecimal } from '../common';
+import { getFormatRuntime, getImageFullUrl, getTrailerUrl, roundToDecimal } from '../common';
 
 export function popularMovieHomeHeroAdapter(movie: MovieHomeHeroDetails): SectionHomeHeroProps {
   const {
@@ -15,6 +15,7 @@ export function popularMovieHomeHeroAdapter(movie: MovieHomeHeroDetails): Sectio
     vote_average,
     release_date,
     runtime,
+    videos,
   } = movie;
 
   const director = movie.credits.crew.find((person) => person.job === 'Director');
@@ -30,5 +31,6 @@ export function popularMovieHomeHeroAdapter(movie: MovieHomeHeroDetails): Sectio
     director: director?.name || '',
     runtime: getFormatRuntime(runtime),
     featureGenre: genres.map((genre) => genre.name)[0] || '',
+    trailerUrl: getTrailerUrl(videos.results),
   };
 }

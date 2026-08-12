@@ -1,5 +1,7 @@
 import { IMAGE_URL } from '@/constants';
-import { PREVIEW_LIST_COUNT } from '@/constants/common.constant';
+import { PREVIEW_LIST_COUNT, YOUTUBE_EMBED_URL } from '@/constants/common.constant';
+
+import { MovieVideo } from '@/types/movie/movie-video.type';
 
 export function getFormatRuntime(runtime: number): string {
   const hours = Math.floor(runtime / 60);
@@ -27,4 +29,19 @@ export function getRatingColor(rating: number) {
 
 export function limitArray<T>(array: readonly T[], limit = PREVIEW_LIST_COUNT): T[] {
   return array.slice(0, limit);
+}
+
+export function getTrailerUrl(videos: MovieVideo[]): string | null {
+  const trailer =
+    videos.find(
+      (video) =>
+        video.site === 'YouTube' &&
+        video.type === 'Trailer' &&
+        video.name === 'Official Trailer' &&
+        video.official,
+    ) ??
+    videos.find((video) => video.site === 'YouTube' && video.type === 'Trailer') ??
+    videos.find((video) => video.site === 'YouTube');
+
+  return trailer ? `${YOUTUBE_EMBED_URL}${trailer.key}` : null;
 }

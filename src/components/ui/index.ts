@@ -17,3 +17,11 @@ export { Spinner } from './spinner';
 export { Tabs } from './tabs';
 export { Textarea } from './textarea';
 export { Toggle } from './toggle';
+
+export { Dialog } from './dialog';
+export { DialogContent } from './dialog';
+export { DialogDescription } from './dialog';
+export { DialogFooter } from './dialog';
+export { DialogHeader } from './dialog';
+export { DialogTitle } from './dialog';
+export { DialogTrigger } from './dialog';
