@@ -26,7 +26,7 @@ export function popularMovieHomeHeroAdapter(movie: MovieHomeHeroDetails): Sectio
     tagline: tagline,
     overview: overview,
     image: getImageFullUrl(backdrop_path),
-    voteAverage: roundToDecimal(vote_average),
+    rating: roundToDecimal(vote_average),
     releaseDate: new Date(release_date).getFullYear().toString(),
     director: director?.name || '',
     runtime: getFormatRuntime(runtime),

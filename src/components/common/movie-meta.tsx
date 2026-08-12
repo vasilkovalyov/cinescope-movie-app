@@ -14,7 +14,7 @@ export function MovieMeta({ rating, details }: MovieMetaProps) {
   return (
     <ul className="flex flex-wrap items-center gap-[20px] mb-[24px] text-primary-dark-text">
       <li>
-        <Rating value={rating} />
+        <Rating value={rating} size="lg" />
       </li>
       {details.map(({ value, id }, index, list) => (
         <Fragment key={id}>

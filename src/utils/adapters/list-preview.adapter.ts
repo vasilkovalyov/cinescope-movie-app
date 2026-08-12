@@ -13,10 +13,10 @@ export function listMoviesPreviewAdapter(movies: MovieResolved[]): PreviewMovieC
       id: id.toString(),
       title: title,
       subtitleInfo: new Date(release_date).getFullYear().toString(),
-      link: `${PAGES.movies}/${id}`,
+      link: `${PAGES.movie}/${id}`,
       image: poster_path ? getImageFullUrl(poster_path) : null,
       genres: genres,
-      voteAverage: roundToDecimal(vote_average),
+      rating: roundToDecimal(vote_average),
     };
     return movieProps;
   });
@@ -40,10 +40,10 @@ export function listTVSeriesPreviewAdapter(tvSeries: TVSeriesDetails[]): Preview
         id: id.toString(),
         title: name,
         subtitleInfo: `Seasons ${seasons.length} ${networkList ? ' · ' + networkList : ''}`,
-        link: `${PAGES.movies}/${id}`,
+        link: `${PAGES.movie}/${id}`,
         image: poster_path ? getImageFullUrl(poster_path) : null,
         genres: genres,
-        voteAverage: roundToDecimal(vote_average),
+        rating: roundToDecimal(vote_average),
         status: status,
       };
       return movieProps;

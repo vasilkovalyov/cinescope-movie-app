@@ -10,7 +10,7 @@ export function topRatedMoviesAdapter(movies: MovieResolved[]): BannerRatedMovie
       id: id.toString(),
       number: (index + 1).toString(),
       title,
-      voteAverage: roundToDecimal(vote_average),
+      rating: roundToDecimal(vote_average),
       genres,
       image: getImageFullUrl(backdrop_path),
     };

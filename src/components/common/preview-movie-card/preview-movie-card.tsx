@@ -16,7 +16,7 @@ export function PreviewMovieCard({
   link,
   subtitleInfo,
   title,
-  voteAverage,
+  rating,
   status,
 }: PreviewMovieCardProps) {
   return (
@@ -30,6 +30,7 @@ export function PreviewMovieCard({
               src={image}
               width={180}
               height={270}
+              loading="lazy"
             />
           ) : (
             <div className="flex aspect-[2/3] items-center justify-center bg-muted">
@@ -39,7 +40,7 @@ export function PreviewMovieCard({
           <div className="card-overlay-gradient" />
           <div className="absolute top-2 right-2">
             <div className="bg-dark/80 backdrop-blur-[8px] rounded-[8px] px-[6px] py-[2px]">
-              <Rating value={voteAverage} size="xs" />
+              <Rating value={rating} size="sm" />
             </div>
           </div>
           <div className="absolute bottom-0 inset-x-0 p-[12px] translate-y-full group-hover:translate-y-0 transition-transform duration-300">

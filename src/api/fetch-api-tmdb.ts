@@ -2,7 +2,11 @@ import { MOVIE_API_URL } from '@/constants';
 
 type FetchGetParams = Record<string, string | number | boolean | undefined>;
 
-export async function fetchGetApiTMDB<T>(url: string, params?: FetchGetParams): Promise<T> {
+export async function fetchGetApiTMDB<T>(
+  url: string,
+  params?: FetchGetParams,
+  requestOptions?: RequestInit,
+): Promise<T> {
   const searchParams = params
     ? new URLSearchParams(
         Object.entries(params)
@@ -17,6 +21,7 @@ export async function fetchGetApiTMDB<T>(url: string, params?: FetchGetParams): 
       accept: 'application/json',
       Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
     },
+    ...requestOptions,
   });
 
   if (!response.ok) {

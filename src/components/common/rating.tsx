@@ -5,17 +5,22 @@ import { getRatingColor } from '@/utils';
 
 interface RatingProps {
   value: number;
-  size?: 'xs' | 'base';
+  size?: 'sm' | 'md' | 'lg';
 }
 
-export function Rating({ value, size = 'base' }: RatingProps) {
+export function Rating({ value, size = 'md' }: RatingProps) {
   function getSizeIcon() {
-    if (size === 'xs') {
+    if (size === 'sm') {
       return 10;
     }
 
-    return 20;
+    if (size === 'lg') {
+      return 20;
+    }
+
+    return 16;
   }
+
   const iconSize = getSizeIcon();
   const colorClassName = getRatingColor(value);
 
@@ -24,8 +29,8 @@ export function Rating({ value, size = 'base' }: RatingProps) {
       className={cn(
         'flex items-center',
         {
-          'gap-[4px]': size === 'xs',
-          'gap-[6px]': size === 'base',
+          'gap-[4px]': size === 'sm',
+          'gap-[6px]': size === 'md' || size === 'lg',
         },
         colorClassName,
       )}
@@ -33,8 +38,9 @@ export function Rating({ value, size = 'base' }: RatingProps) {
       <Star width={iconSize} height={iconSize} fill="currentColor" color="currentColor" />
       <span
         className={cn({
-          'text-[12px]': size === 'xs',
-          'text-base': size === 'base',
+          'text-[12px]': size === 'sm',
+          'text-[14px]': size === 'md',
+          'text-[16px]': size === 'lg',
         })}
       >
         {value}

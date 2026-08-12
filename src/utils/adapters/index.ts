@@ -5,3 +5,4 @@ export {
   listTVSeriesPreviewAdapter,
   listPeoplePreviewAdapter,
 } from './list-preview.adapter';
+export { editorSectionPickBannerAdapter } from './editor-pick-banner.adapter';

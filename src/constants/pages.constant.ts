@@ -1,5 +1,6 @@
 export const PAGES = {
   home: '/',
+  movie: '/movie',
   movies: '/movies',
   tvShows: '/tv-shows',
   people: '/people',

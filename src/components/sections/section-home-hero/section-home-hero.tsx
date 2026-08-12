@@ -15,7 +15,7 @@ export function SectionHomeHero({
   overview,
   image,
   featureGenre,
-  voteAverage,
+  rating,
   releaseDate,
   director,
   runtime,
@@ -53,7 +53,7 @@ export function SectionHomeHero({
       <div className="container relative">
         <div className="max-w-[576px] pt-[60px]">
           <div className="flex items-center gap-[6px]">
-            <span className="flex items-center gap-[6px] text-primary text-xs font-semibold uppercase tracking-widest">
+            <span className="pretitle flex items-center gap-[6px]">
               <span className="w-[6px] h-[6px] rounded-full bg-primary animate-pulse" />
               Featured
             </span>
@@ -63,7 +63,7 @@ export function SectionHomeHero({
           <h1 className="md:text-[72px] mb-[16px] tracking-[-1.8px] leading-[1]">{title}</h1>
           <p className="font-heading text-lg text-primary italic mb-[20px]">{tagline}</p>
           <p className="text-base mb-[24px] line-clamp-3">{overview}</p>
-          <MovieMeta rating={voteAverage} details={INFO_LIST} />
+          <MovieMeta rating={rating} details={INFO_LIST} />
           <div className="flex gap-[12px]">
             {trailerUrl && (
               <MovieTrailerToggler trailerUrl={trailerUrl}>

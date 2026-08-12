@@ -153,4 +153,8 @@
       rgba(0, 0, 0, 0.95) 100%
     );
   }
+
+  .pretitle {
+    @apply uppercase text-primary font-semibold text-[12px] tracking-[1.2];
+  }
 }

@@ -17,6 +17,7 @@ export function PreviewPersonCard({ title, subtitleInfo, image, link }: PreviewP
               src={image}
               width={160}
               height={240}
+              loading="lazy"
             />
           ) : (
             <div className="flex aspect-[2/3] items-center justify-center bg-muted">

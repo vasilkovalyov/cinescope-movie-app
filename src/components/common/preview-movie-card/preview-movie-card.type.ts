@@ -4,7 +4,7 @@ export interface PreviewMovieCardProps {
   id: string;
   title: string;
   subtitleInfo: string;
-  voteAverage: number;
+  rating: number;
   genres: MovieGenre[];
   link: string;
   image: string | null;

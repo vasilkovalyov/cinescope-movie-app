@@ -1,11 +1,9 @@
 export { Logo } from './logo';
 export { MovieMeta } from './movie-meta';
-export { BannerRatedMovie } from './banner-rated-movie';
-export type { BannerRatedMovieProps } from './banner-rated-movie';
+export { BannerRatedMovie, type BannerRatedMovieProps } from './banner-rated-movie';
 export { GenreList } from './genre-list';
 export { SwiperCarousel } from './swiper-carousel';
-export { PreviewMovieCard } from './preview-movie-card';
-export type { PreviewMovieCardProps } from './preview-movie-card';
-export { PreviewPersonCard } from './preview-person-card';
-export type { PreviewPersonCardProps } from './preview-person-card';
+export { PreviewMovieCard, type PreviewMovieCardProps } from './preview-movie-card';
+export { PreviewPersonCard, type PreviewPersonCardProps } from './preview-person-card';
 export { MovieTrailerToggler } from './movie-trailer-toggler';
+export { SkeletonCard } from './skeleton-card';

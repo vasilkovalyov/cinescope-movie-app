@@ -1,6 +1,11 @@
 import { IMAGE_URL } from '@/constants';
-import { PREVIEW_LIST_COUNT, YOUTUBE_EMBED_URL } from '@/constants/common.constant';
+import {
+  MOVIE_RATING_CATEGORY,
+  PREVIEW_LIST_COUNT,
+  YOUTUBE_EMBED_URL,
+} from '@/constants/common.constant';
 
+import { Movie } from '@/types/movie';
 import { MovieVideo } from '@/types/movie/movie-video.type';
 
 export function getFormatRuntime(runtime: number): string {
@@ -20,9 +25,9 @@ export function roundToDecimal(value: number, decimals = 1): number {
 }
 
 export function getRatingColor(rating: number) {
-  if (rating >= 8) return 'text-success';
-  if (rating >= 6) return 'text-yellow-500';
-  if (rating >= 4) return 'text-orange-500';
+  if (rating >= MOVIE_RATING_CATEGORY.high) return 'text-success';
+  if (rating >= MOVIE_RATING_CATEGORY.medium) return 'text-yellow-500';
+  if (rating >= MOVIE_RATING_CATEGORY.low) return 'text-orange-500';
 
   return 'text-red-500';
 }
@@ -44,4 +49,17 @@ export function getTrailerUrl(videos: MovieVideo[]): string | null {
     videos.find((video) => video.site === 'YouTube');
 
   return trailer ? `${YOUTUBE_EMBED_URL}${trailer.key}` : null;
+}
+
+export function getEditorPickMovie(movies: Movie[]): Movie {
+  return movies
+    .filter((movie) => {
+      return movie.vote_average >= MOVIE_RATING_CATEGORY.high;
+    })
+    .reduce((popularMovie, movie) => {
+      if (movie.popularity > popularMovie.popularity) {
+        return movie;
+      }
+      return popularMovie;
+    });
 }

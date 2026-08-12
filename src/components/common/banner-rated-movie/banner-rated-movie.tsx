@@ -15,7 +15,7 @@ export function BannerRatedMovie({
   id,
   number,
   title,
-  voteAverage,
+  rating,
   genres,
   image,
 }: BannerRatedMovieProps) {
@@ -26,22 +26,19 @@ export function BannerRatedMovie({
           src={image}
           alt={title}
           fill={true}
-          className="w-full h-full object-cover "
-          priority
+          className="w-full h-full object-cover"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/50 to-transparent" />
       </div>
 
       <div className="container relative">
-        <div className="max-w-[360px]">
-          <div className="uppercase text-primary font-semibold text-[12px] tracking-[1.2] mb-[8px]">
-            trending #{number}
-          </div>
+        <div className="max-w-[360px] py-[20px]">
+          <div className="pretitle mb-[8px]">trending #{number}</div>
           <h3 className="mb-[8px] leading-[1]">{title}</h3>
           <div className="flex items-center gap-[12px] mb-[16px]">
-            <Rating value={voteAverage} size="xs" />
-            <GenreList items={genres} color="secondary" />
+            <Rating value={rating} size="sm" />
+            <GenreList items={genres} gap="sm" color="secondary" />
           </div>
           <Button asChild variant="link" size="none">
             <Link href={`${PAGES.movies}/${id}`}>

@@ -4,7 +4,7 @@ export interface BannerRatedMovieProps {
   id: string;
   number: string;
   title: string;
-  voteAverage: number;
+  rating: number;
   genres: MovieGenre[];
   image: string;
 }
