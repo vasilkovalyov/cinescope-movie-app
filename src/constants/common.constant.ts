@@ -7,9 +7,11 @@ export const TOP_RATE_COUNT = 5;
 export const YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/';
 
 export const MOVIE_RATING_CATEGORY = {
+  max: 10,
   high: 8,
   medium: 6,
   low: 4,
+  min: 0,
 };
 
 export const IMAGE_TYPE_URL = {

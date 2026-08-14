@@ -157,4 +157,8 @@
   .pretitle {
     @apply uppercase text-primary font-semibold text-[12px] tracking-[1.2];
   }
+
+  .filter-title {
+    @apply text-light font-semibold;
+  }
 }

@@ -18,7 +18,7 @@ import {
 } from '@/components/server-blocks';
 
 export default async function Home() {
-  const [genresMoviesApi] = await Promise.all([GenresApi.create('movie')]);
+  const genresMoviesApi = await GenresApi.create('movie');
   const genres = genresMoviesApi.allGenres;
 
   return (
